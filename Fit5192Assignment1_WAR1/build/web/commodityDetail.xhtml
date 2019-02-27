@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Commodity Information Detail</title>
+    </h:head>
+    <h:body>
+        <article>
+                <h:form>
+                    <h2>Hello   <h:outputText value="#{userManageBean.user.firstname}"/></h2><hr />
+                    <p>you email is  <h:outputText value="#{userManageBean.user.email}"/></p>
+                    <p><h:link outcome="index" value="logout" />.</p>
+                    <h2>Enter the properties of commodity you want to search</h2>		
+                    <hr/>
+
+                        <center>
+                                <!-- Item ID -->		
+                                <p>Item ID:		
+                                    <h:outputText id="Commodity_ID"  value="#{commodityManageBean.commodity.commodityid}"></h:outputText>
+                                </p>
+                                <!-- Title -->		
+                                <p>Title :		
+                                    <h:outputText id="Commoditytitle"  value="#{commodityManageBean.commodity.commodityid}"> </h:outputText>
+                                </p>
+                                <!-- Type -->		
+                                <p>Type:		
+                                    <h:outputText id="Commoditytype" value="#{commodityManageBean.commodity.label}"> </h:outputText>
+                                 </p>
+                              
+                                <!--  Avaliable Units-->		
+                                <p>Avaliable Units:		
+                                    <h:outputText id="avaliableUnitsNumber"  value="#{commodityManageBean.commodity.itemsnum}"></h:outputText>
+                                 </p>
+                                <!-- Price -->		
+                                <p>Price:		
+                                    <h:outputText id="price"  value="#{commodityManageBean.commodity.price}"> </h:outputText>
+                                </p>
+                                <p>Material:		
+                                    <h:outputText id="material"  value="#{commodityManageBean.commodity.material}"> </h:outputText>
+                                </p>
+                                <p>Grades:		
+                                    <h:outputText id="grades"  value="#{commodityManageBean.commodity.grades}"> </h:outputText>
+                                </p>
+                                <p>Author:		
+                                    <h:outputText id="author"  value="#{commodityManageBean.commodity.author}"> </h:outputText>
+                                </p>
+                        </center>
+        
+        
+        
+                        <p></p>
+                        <h:commandButton styleClass="button" value="return Home" action="superadministrator"/>
+                    </h:form>
+        </article>		
+
+            <!-- Start Footer -->		
+            <footer>		
+                <p>This project created Wangzhe</p>
+            </footer>		
+            <!-- End Footer	-->		
+</h:body>
+    
+</html>
+

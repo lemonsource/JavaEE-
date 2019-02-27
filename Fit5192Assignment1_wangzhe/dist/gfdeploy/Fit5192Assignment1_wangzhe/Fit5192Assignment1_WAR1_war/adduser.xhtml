@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h:outputStylesheet name="css/style.css"/>
+                <title>Add User Page</title>
+    </h:head>
+    <h:body>
+        
+        <article>
+             <h:form>
+                <h2>Hello   <h:outputText value="#{userManageBean.user.firstname}"/></h2><hr />
+                <p>you email is  <h:outputText value="#{userManageBean.user.email}"/></p>
+                <p><h:link outcome="index" value="logout" /></p>
+               
+                        <center>
+                            
+                                <!-- Item ID -->		
+                                <p>UserID:		
+                                    <h:inputText id="UserID" label="Id" size="32"  value="#{addUserManagedBean.userid}"> </h:inputText>
+                                    
+                                </p>
+                                <!-- Title -->		
+                                <p>FirstName:		
+                                    <h:inputText id="FirstName" label="title" size="32"  value="#{addUserManagedBean.firstname}"> </h:inputText>
+                                </p>
+                                <!-- Type -->		
+                                <p>LastName:		
+                                    <h:inputText id="LastName" label="type" size="32" value="#{addUserManagedBean.lastname}"> </h:inputText>
+                                 </p>
+                                <!--  Avaliable Units-->
+                                <p>Email:		
+                                    <h:inputText id="email" label="title" size="32"  value="#{addUserManagedBean.email}"> </h:inputText>
+                                </p>
+                                <p>PassWord:		
+                                    <h:inputText id="PassWord" label="password" size="32"  value="#{addUserManagedBean.password}"></h:inputText>
+                                 </p>
+                                <!-- Price -->		
+                                <p>MemberShiplevel:		
+                                    <h:inputText id="MemberShiplevel" label="level" size="32"  value="#{addUserManagedBean.membershiplevel}"> </h:inputText>
+                                </p>
+                                <p>Address:		
+                                    <h:inputText id="Address" label="address" size="32"   value="#{addUserManagedBean.address}"> </h:inputText>
+                                </p>
+                                <p>PhoneNumber:		
+                                    <h:inputText id="PhoneNumber" label="phonenumber" size="32"   value="#{addUserManagedBean.phonenumber}"> </h:inputText>
+                                </p>
+                                <p>Credits:		
+                                    <h:inputText id="Credits" label="credits" size="32"   value="#{addUserManagedBean.availablecredits}"> </h:inputText>
+                                </p>
+                        </center>
+
+
+
+                            <p></p>
+                            <h:commandButton styleClass="button" value="Add" action="#{addUserManagedBean.addUser()}"/>
+                            <h:commandButton styleClass="button" rendered="#{userManageBean.user.membershiplevel==1}" value="ManageUser" action="#{userManageBean.disPlayAllUsers()}"/>
+                            <h:commandButton styleClass="button" value="Home" action="superadministrator"/>
+                           
+            
+             </h:form>
+        </article>	
+        </h:body>
+</html>
+

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet name="css/style.css"/>
+                <title>User Home Page</title>
+    </h:head>
+    <h:body>
+        <article>
+            <h:form>
+                <h1>User Items infomation detail</h1>
+                <h:commandButton styleClass="button" rendered="#{userManageBean.user.membershiplevel==1}" value="ManagerUser" action="manageruser"/>
+                <h:commandButton styleClass="button" value="Home" action="superadministrator"/>
+                <h2>Hello  <h:outputText value="#{userManageBean.user.firstname}"/> this is your items  You have:  <h:outputText value="#{userManageBean.user.availablecredits}"/>  RMB in account</h2><hr />
+                <p><h:link outcome="index" value="logout" /></p>
+
+                <h:dataTable value="#{userManageBean.searchPocessionResult}" var="commodityEntry" 
+                                                styleClass="itemTable" headerClass="item-table-header" 
+                                                rowClasses="item-table-odd-row,item-table-even-row" border="1">                                                                    
+                                                      <h:column>            
+                                                           <f:facet name="header">CommodityID</f:facet>
+                                                           #{commodityEntry.commodityid.commodityid}                                                      
+                                                       </h:column>
+                                                       <h:column>
+                                                          <f:facet name="header">Title</f:facet>
+                                                          #{commodityEntry.commodityid.title}
+                                                       </h:column>
+                                                       <h:column>
+                                                           <f:facet name="header">Label</f:facet>
+                                                          #{commodityEntry.commodityid.label}
+                                                       </h:column>                                                   
+                                                       <h:column>
+                                                          <f:facet name="header">Price</f:facet>
+                                                          #{commodityEntry.commodityid.price}
+                                                       </h:column>
+                                                        <h:column>
+                                                          <f:facet name="header">Number</f:facet>
+                                                          #{userManageBean.getPocessionNum(commodityEntry.commodityid.commodityid)}
+                                                       </h:column>
+                                                       <h:column>            
+                                                            <f:facet name="header">Sale</f:facet>
+                                                            <h:commandButton value="sale" action="#{userManageBean.SaleCommodity(commodityEntry.commodityid.commodityid)}"></h:commandButton>                                                       
+                                                       </h:column>
+
+
+                                   </h:dataTable>
+            </h:form>
+        </article>
+    </h:body>
+</html>
+

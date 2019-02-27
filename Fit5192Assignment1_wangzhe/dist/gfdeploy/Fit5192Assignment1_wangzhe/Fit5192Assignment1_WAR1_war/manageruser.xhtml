@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+            <h:outputStylesheet name="css/style.css"/>
+                <title>ManageUser Page</title>
+    </h:head>
+    <h:body>
+        <article>
+            <h:form>
+                    <h2>Hello   <h:outputText value="#{userManageBean.user.firstname}"/></h2><hr />
+                    <p>you email is  <h:outputText value="#{userManageBean.user.email}"/></p>
+                    <p> <h:link outcome="index" value="logout" /></p>
+                    <h2>Enter the properties of users you want to search</h2>		
+                    <hr/>
+                
+                 <!-- User ID-->
+                 <p>User ID Number:		
+                     <h:inputText id="UserID" label="userid" size="32"  value="#{userManageBean.userid}"></h:inputText>
+                </p>
+                <!-- Title -->		
+                <p>       Email         :		
+                    <h:inputText id="email" label="email" size="32"  value="#{userManageBean.email}"> </h:inputText>
+                </p>
+                <!-- Type -->		
+                <p>   Last Name    :		
+                        <h:inputText id="lastname" label="lastname" size="32" value="#{userManageBean.lastname}"> </h:inputText>
+                 </p>
+                <!--  Avaliable Units-->		
+                <p>   First Name   :		
+                        <h:inputText id="firstname" label="firstname" size="32"  value="#{userManageBean.firstname}"></h:inputText>
+                 </p>
+                <!-- Price -->		
+                <p>   PhoneNum   :		
+                    <h:inputText id="phonenumber" label="phonenumber" size="32" value="#{userManageBean.phonenumber}"> </h:inputText>
+                </p>
+                 <p></p>
+                 <h:commandButton styleClass="button" value="AddUser" action="adduser"/>
+                 <h:commandButton styleClass="button" value="SearchUser" action="#{userManageBean.searchUserAll()}"/>
+                 <h:commandButton styleClass="button" value="DisplayAll" action="#{userManageBean.disPlayAllUsers()}"/>
+
+                 <center>
+                     <h1>Search Result</h1>
+                        
+                                <h:dataTable value="#{userManageBean.searchUserResult}" var="userEntry" 
+                                             styleClass="itemTable" headerClass="item-table-header" 
+                                             rowClasses="item-table-odd-row,item-table-even-row" border="1">                                                                    
+                                                   <h:column>            
+                                                        <f:facet name="header">UserID</f:facet>
+                                                        <h:commandButton value="#{userEntry.userid}" action="#{userManageBean.displayUserDetail(userEntry.userid)}"></h:commandButton>                                                       
+                                                    </h:column>
+                                                    <h:column>
+                                                       <f:facet name="header">Last Name</f:facet>
+                                                       #{userEntry.lastname}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">First Name</f:facet>
+                                                       #{userEntry.firstname}
+                                                    </h:column>
+                                                    <h:column>
+                                                       <f:facet name="header">Phone Number</f:facet>
+                                                       #{userEntry.phonenumber}
+                                                    </h:column>
+                                                    <h:column>
+                                                       <f:facet name="header">Email</f:facet>
+                                                       #{userEntry.email}
+                                                    </h:column>
+                                                    <h:column>            
+                                                        <f:facet name="header">Update</f:facet>
+                                                        <h:commandButton value="update" action="#{updateUserManagedBean.updateUserPage(userEntry)}"></h:commandButton>                                                       
+                                                    </h:column>
+                                                    <h:column>            
+                                                        <f:facet name="header">Delete</f:facet>
+                                                        <h:commandButton value="delete" action="#{userManageBean.deleteUser(userEntry.userid)}"></h:commandButton>                                                       
+                                                    </h:column>
+                                                    
+                                    
+                                </h:dataTable>                  
+                 </center>
+                 <h:commandButton styleClass="button" value="Home" action="superadministrator"/>
+            </h:form>
+        </article>
+        
+        
+        <!-- Start Footer -->		
+<footer>		
+    <p>This project created Wangzhe</p>
+</footer>		
+<!-- End Footer	-->		
+        
+    </h:body>
+</html>
+

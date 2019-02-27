@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>		
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+<h:head>
+    <h:outputStylesheet name="css/style.css"/>
+<title>Adminstrator Page</title>	
+</h:head>
+    
+<h:body>
+        	
+<header>		
+    <h1>Adminstrator Page</h1>		
+</header>		
+		
+<!-- Start	Article	-->		
+<article>
+    <h2>Hello Adminstrator   <h:outputText value="#{userManageBean.user.firstname}"/></h2><hr />
+    <p>you email is  <h:outputText value="#{userManageBean.user.email}"/></p>
+    <p>logout <h:link outcome="index" value="again" />.</p>
+    <h2>Enter the properties of commodity you want to search</h2>		
+    <hr/>
+    
+    <h:form>
+        <!-- Item ID -->		
+        <p>Item ID:</p>		
+        <h:inputText id="Commodity_ID" label="id" size="32" disabled="true" value="#{commodityManageBean.commodityid}">
+        </h:inputText>	
+        <!-- Title -->		
+        <p>Title :</p>		
+        <h:inputText id="Commoditytitle" label="title" size="32" value="#{commodityManageBean.title}">
+        </h:inputText>	
+        <!-- Type -->		
+        <p>Type:</p>		
+        <h:inputText id="Commoditytype" label="type" size="32" value="#{commodityManageBean.label}">
+        </h:inputText>	
+        <!--  Avaliable Units-->		
+        <p>Avaliable Units:</p>		
+        <h:inputText id="avaliableUnitsNumber" label="avaliablenum" size="32" disabled="true" value="#{commodityManageBean.availablenum}">
+        </h:inputText>	
+        <!-- Price -->		
+        <p>Price:</p>		
+        <h:inputText id="price" label="price" size="32" value="#{commodityManageBean.price}">
+        </h:inputText>
+        
+        
+        
+        <p></p>
+        <h:commandButton styleClass="button" value="Search" action="#{commodityManageBean.searchall()}"/>		
+        <h:commandButton styleClass="button" value="View" action="#{itemController.displayAllItems()}"/>		
+        <h:commandButton styleClass="button" value="Close" action="response"/>
+        
+        
+        <h:dataTable value="#{commodityManageBean.searchcommodities}" var="itemEntry"
+                     styleClass="itemTable" headerClass="item-table-header" 
+                     rowClasses="item-table-odd-row,item-table-even-row">
+            <h:column>            
+                <f:facet name="header">ID</f:facet>            
+                #{itemEntry.commodityid}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Title</f:facet>
+               #{itemEntry.title}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Label</f:facet>
+               #{itemEntry.label}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Available Number</f:facet>
+               #{itemEntry.itemstotalnum}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Price</f:facet>
+               #{itemEntry.price}
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</article>		
+
+<!-- Start Footer -->		
+<footer>		
+    <p>This project created Wangzhe</p>
+</footer>		
+<!-- End Footer	-->		
+</h:body>
+    
+    
+</html>
+
+
+
+

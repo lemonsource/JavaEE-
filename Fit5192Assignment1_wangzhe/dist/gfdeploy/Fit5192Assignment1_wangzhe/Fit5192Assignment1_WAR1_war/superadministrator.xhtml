@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>		
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+<h:head>
+    <h:outputStylesheet name="css/style.css"/>
+<title>home Page</title>	
+</h:head>
+    
+<h:body>
+        	
+<header>		
+    <h1>Home Page</h1>		
+</header>		
+		
+<!-- Start	Article	-->		
+<article>
+     <h:form>
+    <h2>Hello   <h:outputText value="#{userManageBean.user.firstname}"/></h2><hr />
+    <p>your email is  <h:outputText value="#{userManageBean.user.email}"/></p>
+    <p>your account have :  <h:outputText value="#{userManageBean.user.availablecredits}"/> RMB</p>
+    <p><h:link outcome="index" value="logout" /></p>
+    <h2>Enter the properties of commodity you want to search</h2>		
+    <hr/>
+    
+   
+        <center>
+       
+                <!-- Title -->		
+                <p>Title :		
+                        <h:inputText id="Commoditytitle" label="title" size="32" value="#{commodityManageBean.title}"> </h:inputText>
+                </p>
+                <!-- Type -->		
+                <p>Type:		
+                        <h:inputText id="Commoditytype" label="type" size="32" value="#{commodityManageBean.label}"> </h:inputText>
+                 </p>
+                <!-- Price -->		
+                <p>Price:		
+                         <h:inputText id="price" label="price" size="32" value="#{commodityManageBean.price}"> </h:inputText>
+                </p>
+        </center>
+        
+        
+        
+        <p></p>
+        <h:commandButton styleClass="button" value="Search" action="#{commodityManageBean.searchall()}"/>		
+        <h:commandButton styleClass="button" value="ViewAll" action="#{commodityManageBean.displayAllComodities()}"/>
+        <h:commandButton styleClass="button" value="update my information" action="#{updateUserManagedBean.updateUserPage(userManageBean.user)}"/>
+        <h:commandButton styleClass="button" value="view my pocessions" action="#{userManageBean.displayUserDetail(userManageBean.user.userid)}"/>
+        <h:commandButton styleClass="button" rendered="#{userManageBean.user.membershiplevel==1}" value="ManageUser" action="#{userManageBean.disPlayAllUsers()}"/>
+        
+        
+        
+        <center>
+            <h:dataTable value="#{commodityManageBean.searchcommodities}" var="itemEntry"
+                         styleClass="itemTable" headerClass="item-table-header" 
+                         rowClasses="item-table-odd-row,item-table-even-row" border="1">
+                <h:column>            
+                    <f:facet name="header">ID</f:facet>            
+                    #{itemEntry.commodityid}
+                </h:column>
+                <h:column>
+                   <f:facet name="header">Title</f:facet>
+                   #{itemEntry.title}
+                </h:column>
+                <h:column>
+                   <f:facet name="header">Label</f:facet>
+                   #{itemEntry.label}
+                </h:column>
+                <h:column>
+                   <f:facet name="header">Available Number</f:facet>
+                   #{itemEntry.itemsnum}
+                </h:column>
+                <h:column>
+                   <f:facet name="header">Price</f:facet>
+                   #{itemEntry.price}
+                </h:column>
+                <h:column>            
+                    <f:facet name="header">Buy</f:facet>
+                    <h:commandButton value="buy" action="#{userManageBean.BuyCommodity(itemEntry.commodityid)}"></h:commandButton>                                                       
+                </h:column>
+                <h:column>            
+                    <f:facet name="header">Commodity Detail</f:facet>
+                    <h:commandButton value="unfold" action="#{commodityManageBean.DisplayCommodityDetail(itemEntry.commodityid)}"></h:commandButton>                                                       
+                </h:column>
+            </h:dataTable>
+        </center>
+        
+            
+        
+        
+    </h:form>
+</article>		
+
+<!-- Start Footer -->		
+<footer>		
+    <p>This project created Wangzhe</p>
+</footer>		
+<!-- End Footer	-->		
+</h:body>
+    
+    
+</html>
+
+
+
